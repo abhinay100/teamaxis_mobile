@@ -1,0 +1,25 @@
+<!--S3170039F-->
+<ion-content ng-controller="LoginController" class="team-body-color">
+        <div class="row ionic responsive-sm team-logo">
+          <div class="col center-this">
+            <img ng-src="img/crown.jpg" width="75%" class="">
+          </div>
+        </div>
+        <div class="row ionic responsive-sm">
+          <div class="col item-input">
+            <input type="text" placeholder="NRIC No" ng-model="data.username" class="text-center">
+          </div>
+        </div>
+       <hr class="horizontal-separator">
+        <div class="row ionic responsive-sm">
+          <div class="col item-input">
+            <input type="password" placeholder="Password" ng-model="data.password" class="text-center">
+          </div>
+        </div>
+        <hr class="horizontal-separator">
+        <div class="row ionic responsive-sm">
+          <div class="col">
+            <a ng-click="loginUser()" class="button button-block button-default login-button button-energized">Sign In</a>
+          </div>
+        </div>
+</ion-content>

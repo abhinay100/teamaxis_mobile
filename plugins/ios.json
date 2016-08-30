@@ -1,0 +1,47 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "com.teamaxis.push"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "com.teamaxis.push"
+        },
+        "cordova-plugin-geolocation": {
+            "PACKAGE_NAME": "com.teamaxis.push"
+        },
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "com.teamaxis.push"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "com.teamaxis.push"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.teamaxis.push"
+        },
+        "ionic-plugin-keyboard": {
+            "PACKAGE_NAME": "com.teamaxis.push"
+        },
+        "phonegap-plugin-push": {
+            "SENDER_ID": "492829686551",
+            "PACKAGE_NAME": "com.teamaxis.push"
+        }
+    },
+    "dependent_plugins": {
+        "cordova-plugin-background-mode": {
+            "PACKAGE_NAME": "com.teamaxis.push"
+        },
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "com.teamaxis.push"
+        },
+        "cordova.plugins.diagnostic": {
+            "PACKAGE_NAME": "com.teamaxis.push"
+        }
+    }
+}

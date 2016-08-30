@@ -1,0 +1,38 @@
+<ion-view view-title="Sessions">
+    <ion-content style="background: #E4E4E4;">
+      <!-- <ion-refresher
+        pulling-text="Pull to refresh..."
+        on-refresh="doRefresh()">
+      </ion-refresher> -->
+        <div ng-if="showList">
+
+
+            <div class="card list  animate-blinds" style="padding:16px 0px 0px 0px;" ng-repeat='item in events'>
+                <div class="item item-avatar">
+                    <img src="img/material4.jpg">
+                    <h2>{{item.event_name}}</h2>
+                </div>
+
+                <div class="item item-location">
+                    <i class="icon ion-location"> {{item.event_location}} </i>
+                </div>
+
+                <div class="item item-date">
+                    <i class="icon ion-calendar"> {{item.date}} </i>
+                </div>
+
+                <div class="item item-time">
+                    <i class="icon ion-clock"> {{item.start_time}} - {{item.end_time}} </i>
+                </div>
+
+                <div class="item item-wage">
+                    <i class="icon ion-person-stalker"> Trainer Wage : {{item.hourly_wage_t}}, Facilitator Wage : {{item.hourly_wage_f}} </i>
+                </div>
+
+
+
+            </div>
+        </div>
+
+    </ion-content>
+</ion-view>

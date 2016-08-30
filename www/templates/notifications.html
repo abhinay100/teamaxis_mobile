@@ -1,0 +1,204 @@
+<ion-view view-title="Assignments" cache-view="false">
+<ion-pane>
+  <ion-tabs class="tabs-icon-left tabs-dark">
+
+
+    <ion-tab title="New Assignments" icon="ion-home" >
+      <ion-view view-title="New Assignments">
+        <ion-content has-header="true" has-tabs="true" padding="true" class="flat-grey">
+          <ion-refresher pulling-text="Pull to refresh..." on-refresh="doRefresh()">
+          </ion-refresher>
+
+           <div ng-if="showList">
+
+            <!-- <div ng-if="showList"> -->
+            <div class="card list animate-blinds"  ng-if="events.length > 0" ng-repeat='item in events' ng-click="openSignin(item.event_id,item.session_id)">
+                  <div class="item item-avatar">
+                     <img src="img/material4.jpg">
+                     <span class="pull-left">
+                       <h2> {{item.event_name}}</h2>
+                       <h3><i class="icon ion-flag"></i> {{item.no_of_sessions}} Sessions</h3>
+                       <!-- <h4><i class="icon ion-loop"></i> Occurs every week</h4> -->
+                       <h4> <i class="icon ion-loop" ng-if="item.repeats == 'd'"> Occurs every Day</i></h4>
+                       <h4> <i class="icon ion-loop" ng-if="item.repeats == 'w'"> Occurs every Week </i> </h4>
+                       <h4> <i class="icon ion-loop" ng-if="item.repeats == 'f'"> Occurs every fortnight </i> </h4>
+                       <h4> <i class="icon ion-loop" ng-if="item.repeats == 'm'"> Occurs every month </i> </h4>
+                     </span>
+                     <span class="pull-right">
+                       <h2><i class="icon ion-cash"></i> SGD {{item.hourly_wage_t}}</h2>
+                       <i class="icon ion-clock"> {{item.no_of_session_hours}} hours</i>
+                     </span>
+                  </div>
+                 <div class="item item-trainer">
+                      <i class="ion-android-locate" style="white-space: initial;"><b> Venue : </b> {{item.event_venue}} </i>
+                      <br>
+                      <i class="icon ion-location" style="white-space: initial;"> {{item.event_location}} </i>
+                      <br>
+                     <i class="icon ion-person-stalker" style="white-space: initial;"><b> Trainers : </b> {{item.no_of_trainers}} </i>
+                     <br>
+                     <i class="icon ion-calendar" style="white-space: initial;"> {{item.start_date | date: 'dd-MM-yyyy'}} to {{item.end_date | date: 'dd-MM-yyyy'}}</i>
+                     <br>
+                     <i class="ion-android-clipboard" style="white-space: initial;"><b> Event Description : </b><pre style="white-space:pre-line;font-family:sans-serif;"> {{item.event_description.trim()}}</pre> </i>
+
+                     <i class="ion-email" style="white-space: initial;"><b> Message : </b> {{item.message_text}} </i>
+                     <br>
+                     <i class="ion-android-contact" style="white-space: initial;"><b> Contact Person : </b> {{item.point_of_contact_name}} </i>
+                     <br>
+                     <i class="ion-android-call" style="white-space: initial;"><b> Contact Number : </b><a ng-href="tel:{{item.point_of_contact}}"> {{item.point_of_contact}} </a> </i>
+                 </div>
+                 <div class="item tabs tabs-secondary tabs-icon-left" id="{{'card_id_'+item.event_id}}">
+                   <a ng-click="openSessions(item.event_id)" class="tab-item" data-ink-color="#336699" data-ink-opacity="0.5">
+                     <i class="icon ion-arrow-swap"></i> Assignment Description
+                   </a>
+                   <a ng-click="joinEvent(item.notification_id, item.event_id)" class="tab-item" data-ink-color="#336699" data-ink-opacity="0.5">
+                     <i class="icon ion-checkmark"></i> Join
+                   </a>
+                   <a ng-click="denyEvent(item.notification_id, item.event_id)" class="tab-item" data-ink-color="#336699" data-ink-opacity="0.5">
+                     <i class="icon ion-android-close"></i> Deny
+                   </a>
+                 </div>
+             </div>
+    </div>
+             <div ng-if="events.length == 0">
+               <p><center>No current notifications to show</center></p>
+             </div>
+
+        <!-- </div> -->
+
+        </ion-content>
+      </ion-view>
+    </ion-tab>
+
+    <ion-tab title="Assignment Status" icon="ion-clock" >
+
+      <ion-view view-title="Assignment Status">
+        <ion-content has-header="true" has-tabs="true" padding="true" class="flat-grey">
+          <ion-refresher pulling-text="Pull to refresh..." on-refresh="doPastRefresh()">
+          </ion-refresher>
+
+
+          <div class="card list "  ng-if="pastEvents.length > 0" ng-repeat='items in pastEvents' ng-click="pastSessions(items.event_id)" >
+                <div class="item item-avatar">
+                   <img src="img/material4.jpg">
+                   <span class="pull-left">
+                     <h2> {{items.event_name}}</h2>
+                     <h3><i class="icon ion-flag"></i> {{items.no_of_sessions}} Sessions</h3>
+                     <!-- <h4><i class="icon ion-loop"></i> Occurs every week</h4> -->
+                    <h4> <i class="icon ion-loop" ng-if="items.repeats == 'd'"> Occurs every Day</i></h4>
+                    <h4> <i class="icon ion-loop" ng-if="items.repeats == 'w'"> Occurs every Week </i> </h4>
+                    <h4> <i class="icon ion-loop" ng-if="items.repeats == 'f'"> Occurs every fortnight </i> </h4>
+                    <h4> <i class="icon ion-loop" ng-if="items.repeats == 'm'"> Occurs every month </i> </h4>
+                   </span>
+                   <span class="pull-right">
+                     <h2><i class="icon ion-cash"></i> SGD {{items.hourly_wage_t}}</h2>
+                     <i class="icon ion-clock"> {{items.no_of_session_hours}} hours</i>
+                   </span>
+                </div>
+               <div class="item item-trainer">
+                    <i class="ion-android-locate" style="white-space: initial;"><b> Venue : </b> {{items.event_venue}} </i>
+                   <br>
+                    <i class="icon ion-location" style="white-space: initial;"> {{items.event_location}} </i>
+                    <br>
+                   <i class="icon ion-person-stalker" style="white-space: initial;"><b> Trainers : </b> {{items.no_of_trainers}}</i>
+                   <br>
+                   <i class="icon ion-calendar" style="white-space: initial;"> {{items.start_date | date: 'dd-MM-yyyy'}} to {{items.end_date | date: 'dd-MM-yyyy'}}</i>
+                   <br>
+                   <i class="ion-android-clipboard" style="white-space: initial;"><b> Event Description : </b><pre style="white-space:pre-line;font-family:sans-serif;"> {{items.event_description.trim()}}</pre> </i>
+
+                   <i class="ion-email" style="white-space: initial;"><b> Message : </b> {{items.message_text}} </i>
+                   <br>
+                   <i class="ion-android-contact" style="white-space: initial;"><b> Contact Person : </b> {{items.point_of_contact_name}} </i>
+                   <br>
+                   <i class="ion-android-call" style="white-space: initial;"><b> Contact Number : </b><a ng-href="tel:{{items.point_of_contact}}"> {{items.point_of_contact}}</a> </i>
+                   <br>
+                   <i class="icon ion-compose" ng-if="items.status == 'Y' && items.viewed_terms_condition == 'Y'"><b> Status : </b> <font color="green"> Accepted </font>  </i>
+                   <i class="icon ion-compose" ng-if="items.status == 'N'"><b> Status : </b> <font color="red"> Denied </font> </i>
+                   <i class="icon ion-compose" ng-if="items.status == 'Y' && items.viewed_terms_condition != 'Y'"><b> Status : </b> <font color="orange"> Pending </font> </i>
+                   <br>
+                   <i class="ion-ios-bookmarks-outline" ng-if="items.response != null"> Reason: {{items.response}} </i>
+                   <i  ng-if="items.response == null"> </i>
+               </div>
+           </div>
+
+           <div ng-if="pastEvents.length == 0">
+              <p><center>No past notifications to show</center></p>
+            </div>
+        </ion-content>
+      </ion-view>
+    </ion-tab>
+
+
+
+    <ion-tab title="Assigned" icon="ion-checkmark-circled" on-select="reassign()" >
+
+      <ion-view view-title="Assigned">
+        <ion-content has-header="true" has-tabs="true" padding="true" class="flat-grey">
+          <ion-refresher pulling-text="Pull to refresh..." on-refresh="doAssignRefresh()">
+          </ion-refresher>
+
+
+          <div class="card list "  ng-if="assignEvents.length > 0"  ng-repeat='events in assignEvents '  >
+                <div class="item item-avatar">
+                   <img src="img/material4.jpg">
+                   <span class="pull-left">
+                     <h2> {{events.event_name}}</h2>
+                     <h3><i class="icon ion-flag"></i> {{events.no_of_sessions}} Sessions</h3>
+                     <!-- <h4><i class="icon ion-loop"></i> Occurs every week</h4> -->
+                     <h4> <i class="icon ion-loop" ng-if="events.repeats == 'd'"> Occurs every Day</i></h4>
+                     <h4> <i class="icon ion-loop" ng-if="events.repeats == 'w'"> Occurs every Week </i> </h4>
+                     <h4> <i class="icon ion-loop" ng-if="events.repeats == 'f'"> Occurs every fortnight </i> </h4>
+                     <h4> <i class="icon ion-loop" ng-if="events.repeats == 'm'"> Occurs every month </i> </h4>
+                   </span>
+                   <span class="pull-right">
+                     <h2><i class="icon ion-cash"></i> SGD {{events.hourly_wage_t}}</h2>
+                     <i class="icon ion-clock"> {{events.no_of_session_hours}} hours</i>
+                   </span>
+                </div>
+               <div class="item item-trainer">
+                    <i class="ion-android-locate" style="white-space: initial;"><b> Venue : </b> {{events.event_venue}} </i>
+                    <br>
+                    <i class="icon ion-location" style="white-space: initial;"> {{events.event_location}} </i>
+                    <br>
+                   <i class="icon ion-person-stalker" style="white-space: initial;"><b> Trainers : </b> {{events.no_of_trainers}}</i>
+                   <br>
+                   <i class="icon ion-calendar" style="white-space: initial;"> {{events.start_date | date: 'dd-MM-yyyy'}} to {{events.end_date | date: 'dd-MM-yyyy'}}</i>
+                   <br>
+                   <i class="ion-android-clipboard" style="white-space: initial;"><b> Event Description : </b><pre style="white-space:pre-line;font-family:sans-serif;"> {{events.event_description.trim()}}</pre> </i>
+
+                   <i class="ion-email" style="white-space: initial;"><b> Message : </b> {{events.message_text}} </i>
+                   <br>
+                   <i class="ion-android-contact" style="white-space: initial;"><b> Contact Person : </b> {{events.point_of_contact_name}} </i>
+                   <br>
+                   <i class="ion-android-call" style="white-space: initial;"><b> Contact Number : </b><a ng-href="tel:{{events.point_of_contact}}"> {{events.point_of_contact}} </a> </i>
+
+               </div>
+
+               <div ng-controller="viewctrl" class="item tabs tabs-secondary tabs-icon-left"  id = "Assigned tab" ng-if="events.viewed_terms_condition == null">
+                 <a  ng-click="openPastSession(events.notification_id)"   class="tab-item" data-ink-color="#336699" data-ink-opacity="0.5">
+                   <i class="icon ion-document-text"></i> Click here to view offer
+                 </a>
+               </div>
+
+           </div>
+
+
+           <div ng-if="assignEvents.length == 0">
+                <p><center>No Events to show</center></p>
+              </div>
+        </ion-content>
+      </ion-view>
+    </ion-tab>
+
+
+
+
+
+
+
+  </ion-tabs>
+
+
+</ion-pane>
+
+
+</ion-view>

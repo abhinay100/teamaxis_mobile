@@ -1,0 +1,57 @@
+<ion-view view-title="Sessions">
+    <ion-content style="background: #E4E4E4;">
+      <ion-refresher
+        pulling-text="Pull to refresh..."
+        on-refresh="doRefresh()">
+      </ion-refresher>
+        <div ng-if="showList">
+
+
+            <div class="card list  animate-blinds" style="padding:16px 0px 0px 0px;" ng-repeat='item in events'>
+                <div class="item item-avatar">
+                    <img src="img/material4.jpg">
+                    <h2>{{item.event_name}}</h2>
+                </div>
+
+                <div class="item item-locate">
+                    <i class="ion-android-locate" style="white-space: initial;"><b> Venue : </b> {{item.event_venue}} </i>
+                </div>
+
+
+                <div class="item item-location">
+                    <i class="icon ion-location" style="white-space: initial;"> {{item.event_location}} </i>
+                </div>
+
+                <div class="item item-date">
+                    <i class="icon ion-calendar" style="white-space: initial;"> {{item.date | date: 'dd-MM-yyyy'}} </i>
+                </div>
+
+                <div class="item item-time">
+                    <i class="icon ion-clock" style="white-space: initial;"> {{item.start_time}} - {{item.end_time}} </i>
+                </div>
+
+                <div class="item item-wage">
+                    <i class="icon ion-person-stalker" style="white-space: initial;"><b> Trainer Wage : </b> {{item.hourly_wage_t}},<b> Facilitator Wage : </b> {{item.hourly_wage_f}} </i>
+                </div>
+
+
+                <div class="item item-phonename">
+                    <i class="ion-android-contact" style="white-space: initial;"><b> Contact Person : </b> {{item.point_of_contact_name}} </i>
+                </div>
+
+                <div class="item item-phone">
+                    <i class="ion-android-call" style="white-space: initial;"><b> Contact Number : </b><a ng-href="tel:{{item.point_of_contact}}"> {{item.point_of_contact}} </a></i>
+                </div>
+
+
+
+                <div class="item item-clipboard">
+                    <i class="ion-android-clipboard" style="white-space: initial;"><b> Event Description : </b><pre style="white-space:pre-line;font-family:sans-serif;"> {{item.event_description}}</pre> </i>
+                </div>
+
+
+            </div>
+        </div>
+
+    </ion-content>
+</ion-view>

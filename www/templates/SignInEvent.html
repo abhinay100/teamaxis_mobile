@@ -1,0 +1,62 @@
+<ion-view view-title="Events" cache-view="false">
+  <ion-content ng-class="{expanded:$scope.isExpanded}" class="session_detail">
+    <div class="hero" style="background:url('img/kabbadi.jpg');background-size: cover;">
+    </div>
+
+    <div ng-repeat='item in AttendenceEvents'>
+    <div class="tabs tabs-dark tabs-icon-top static">
+        <h2 class="text-white text-left" style="font-size:150%;">
+            {{item.event_name}}
+        </h2>
+    </div>
+
+    <div class="list list-inset bg-white">
+      <label class="item item-input item-stacked-label">
+        <span class="input-label"><i class="icon ion-calendar"> {{item.date | date: 'dd-MM-yyyy'}}</i></span>
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label"><i class="icon ion-clock"> {{item.start_time}} - {{item.end_time}}</i></span>
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label"><i class="ion-android-locate"> {{item.event_venue}}</i></span>
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label"><i class="icon ion-location"> {{item.event_location}}</i></span>
+
+      </label>
+      <label class="item item-input item-stacked-label" ng-if="item.repeats == 'd'">
+        <span class="input-label"><i class="icon ion-loop" >Occurs every Day</i></span>
+      </label>
+      <label class="item item-input item-stacked-label" ng-if="item.repeats == 'w'">
+      <span class="input-label"><i class="icon ion-loop" >Occurs every Week</i></span>
+      </label>
+      <label class="item item-input item-stacked-label" ng-if="item.repeats == 'f'">
+      <span class="input-label"><i class="icon ion-loop" >Occurs every fortnight</i></span>
+      </label>
+      <label class="item item-input item-stacked-label" ng-if="item.repeats == 'm'">
+      <span class="input-label"><i class="icon ion-loop" >Occurs every month</i></span>
+      </label>
+
+
+      <!-- <label class="item item-input item-stacked-label">
+        <span class="input-label"><i class="icon ion-loop"> {{date | date:'yyyy-MM-dd'}}</i></span>
+      </label> -->
+      <label class="item item-input item-stacked-label">
+        <span class="input-label"><i class="icon ion-cash"> {{item.hourly_wage_t}}</i></span>
+      </label>
+
+      <!-- <h4> <i class="icon ion-loop" ng-if ="value == true "> Occurs every Day</i></h4>
+        <h4> <i class="icon ion-loop" ng-if ="value == false "> Occurs every week</i></h4> -->
+      <div class = "weekly" ng-if ="value == true">
+      <button class="button button-block bar-balanced" ng-click="LoginStatus('sign_in')">
+        Sign In
+      </button>
+    </div>
+    <!-- <div class = "monthly" ng-if ="date | date:'yyyy-MM-dd' != item.date | date:'yyyy-MM-dd' ">
+    <button class="button button-block bar-balanced" >
+      log in
+    </button>
+  </div> -->
+  </div>
+  </ion-content>
+</ion-view>

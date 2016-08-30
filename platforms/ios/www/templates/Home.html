@@ -1,0 +1,97 @@
+<ion-view view-title="Home" cache-view="false">
+  <ion-pane>
+  <ion-content ng-class="{expanded:$scope.isExpanded}" class="flat-grey">
+        <div class="hero cover-min">
+            <div class="content">
+                <div ng-if="proPic" class="avatar" style="background-image: url('{{proPic}}');"></div>
+                <div ng-if="!proPic" class="avatar"></div>
+                <h3><a class="light">{{firstName}} {{profileName}}</a></h3>
+
+            </div>
+        </div>
+        <ion-refresher pulling-text="Pull to refresh..." on-refresh="doRefresh()"></ion-refresher>
+        <div ng-if="showList">
+          <div class="card list animate-blinds"  ng-repeat="item in todayEvents | orderBy:'date':reverse" ng-click="openSignin(item.event_id,item.session_id,item.status,item.session_event_person_id)">
+
+                <div class="item item-avatar">
+                   <img src="img/material4.jpg">
+                   <span class="pull-left">
+                     <h2> {{item.event_name}}</h2>
+                     <h3><i class="icon ion-flag"></i> {{item.no_of_sessions}} Sessions</h3>
+                     <!-- <h4><i class="icon ion-loop"></i> Occurs every Week </h4> -->
+                     <h4> <i class="icon ion-loop" ng-if="item.repeats == 'd'"> Occurs every Day</i></h4>
+                     <h4> <i class="icon ion-loop" ng-if="item.repeats == 'w'"> Occurs every Week </i> </h4>
+                     <h4> <i class="icon ion-loop" ng-if="item.repeats == 'f'"> Occurs every fortnight </i> </h4>
+                     <h4> <i class="icon ion-loop" ng-if="item.repeats == 'm'"> Occurs every month </i> </h4>
+
+                   </span>
+                   <span class="pull-right">
+                     <h4 class="date"><i class="icon ion-calendar"></i> {{item.date | date: 'dd-MM-yyyy'}}</h4>
+                     <!-- <h4 class="date"><i class="icon ion-calendar"></i> {{date | date:'yyyy-MM-dd'}}</h4> -->
+                     <h5> {{item.start_time}}- {{item.end_time}}</h5>
+                     <span class="text-wide text-tiny text-muted text-uppercase"> Session {{item.session_no}}</span>
+                   </span>
+                </div>
+               <div class="item item-trainer">
+                   <i class="icon ion-person-stalker" style="white-space: initial;"><b> Trainers : </b> {{item.no_of_trainers}},<b> Facilitators : </b> {{item.no_of_facilitators}} </i>
+                   <br>
+                   <i class="ion-android-locate" style="white-space: initial;"><b> Venue : </b> {{item.event_venue}} </i>
+                   <br>
+                   <i class="icon ion-location" style="white-space: initial;"> {{item.event_location}} </i>
+                   <br>
+                   <i class="ion-android-clipboard" style="white-space: initial;"><b> Event Description : </b><pre style="white-space:pre-line;font-family:sans-serif;"> {{item.event_description.trim()}}</pre> </i>
+
+                   <i class="ion-android-contact" style="white-space: initial;"><b> Contact Person : </b> {{item.point_of_contact_name}} </i>
+                   <br>
+                   <i class="ion-android-call" style="white-space: initial;"><b> Contact Number : </b><a ng-href="tel:{{item.point_of_contact}}">  {{item.point_of_contact}} </a></i>
+               </div>
+
+</div>
+
+
+
+
+           <!-- <div class="card list animate-blinds" ng-if="todayEvents.length > 0 && date | date:'yyyy-MM-dd' != item.date" ng-repeat='item in todayEvents ' >
+                 <div class="item item-avatar">
+                    <img src="img/material4.jpg">
+                    <span class="pull-left">
+                      <h2> {{item.event_name}}</h2>
+                      <h3><i class="icon ion-flag"></i> {{item.no_of_sessions}} Sessions</h3>
+
+                      <h4> <i class="icon ion-loop" ng-if="item.repeats == 'd'"> Occurs every Day</i></h4>
+                      <h4> <i class="icon ion-loop" ng-if="item.repeats == 'w'"> Occurs every Week </i> </h4>
+                      <h4> <i class="icon ion-loop" ng-if="item.repeats == 'f'"> Occurs every fortnight </i> </h4>
+                      <h4> <i class="icon ion-loop" ng-if="item.repeats == 'm'"> Occurs every month </i> </h4>
+
+                    </span>
+                    <span class="pull-right">
+
+                      <h4 class="date"><i class="icon ion-calendar"></i> {{item.date}}</h4>
+                      <h5> {{item.start_time}}- {{item.end_time}}</h5>
+                      <span class="text-wide text-tiny text-muted text-uppercase"> Session {{item.session_no}}</span>
+                    </span>
+                 </div>
+                <div class="item item-trainer">
+                    <i class="icon ion-person-stalker" style="white-space: initial;"><b> Trainers : </b> {{item.no_of_trainers}},<b> Facilitators : </b> {{item.no_of_facilitators}} </i>
+                    <br>
+                    <i class="ion-android-locate" style="white-space: initial;"><b> Venue : </b> {{item.event_venue}} </i>
+                    <br>
+                    <i class="icon ion-location" style="white-space: initial;"> {{item.event_location}} </i>
+                    <br>
+                    <i class="ion-android-clipboard" style="white-space: initial;"><b> Event Description : </b> {{item.event_description}} </i>
+                </div>
+            </div> -->
+
+
+
+
+
+
+
+           <div ng-if="todayEvents.length == 0">
+                <p><center> No Sessions for today </center></p>
+           </div>
+        </div>
+    </ion-content>
+  </ion-pane>
+</ion-view>
