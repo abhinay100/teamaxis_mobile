@@ -1,0 +1,111 @@
+
+<ion-side-menus enable-menu-with-back-views="false">
+    <ion-side-menu-content>
+        <ion-nav-bar class="bar-positive">
+            <ion-nav-back-button class="no-text">
+            </ion-nav-back-button>
+            <ion-nav-buttons side="left">
+                <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+            </ion-nav-buttons>
+<!--
+            <ion-nav-buttons side="right">
+                <button class="button button-icon button-clear ion-android-more-vertical" id="menu-popover" ng-click="popover.show($event)"></button>
+            </ion-nav-buttons>
+-->
+        </ion-nav-bar>
+        <button ng-if="hasFab" id="fab" class="button button-positive button-fab button-fab-bottom-right">
+            <i class="icon ion-social-twitter"></i>
+        </button>
+
+
+        <ion-nav-view name="menuContent"></ion-nav-view>
+    </ion-side-menu-content>
+    <ion-side-menu side="left">
+        <ion-header-bar class="expanded">
+
+
+      <!-- <form name="myForm" method = "post" ng-controller="LoginController"> -->
+
+    <!-- <fieldset> -->
+      <!-- <legend>Upload on form submit</legend>
+      Username: -->
+      <!-- <input type="text" name="userName" ng-model="username" size="31" required>
+      <i ng-show="myForm.userName.$error.required">*required</i> -->
+
+
+      <!-- <br>Photo:
+      <input type="file" ngf-select ng-model="picFile" name="file"
+             accept="image/*" ngf-max-size="2MB" required
+             ngf-model-invalid="errorFile">
+      <i ng-show="myForm.file.$error.required">*required</i><br>
+      <i ng-show="myForm.file.$error.maxSize">File too large
+          {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
+      <img ng-show="myForm.file.$valid" ngf-thumbnail="picFile" class="thumb"> <button ng-click="picFile = null" ng-show="picFile">Remove</button>
+      <br>
+      <button ng-disabled="!myForm.$valid"
+              ng-click="uploadPic(picFile)">Submit</button>
+      <span class="progress" ng-show="picFile.progress >= 0">
+        <div style="width:{{picFile.progress}}%"
+            ng-bind="picFile.progress + '%'"></div>
+      </span>
+      <span ng-show="picFile.result">Upload Successful</span>
+      <span class="err" ng-show="errorMsg">{{errorMsg}}</span> -->
+    <!-- </fieldset> -->
+    <!-- <br>
+  </form> -->
+
+
+
+
+
+
+
+
+            <img src="{{proPic}}" class="avatar motion spin fade">
+
+            <div class="menu-bottom">
+                {{firstName}} {{profileName}}
+            </div>
+
+
+
+
+      <!-- <div>Select an image file: <input type="file" id="fileInput" /></div>
+     <div class="cropArea">
+       <img-crop image="myImage" result-image="myCroppedImage"></img-crop>
+     </div>
+     <div>Cropped Image:</div>
+     <div><img ng-src="{{myCroppedImage}}" class="avatar motion spin fade" /></div> -->
+
+
+
+
+        </ion-header-bar>
+        <ion-content class="stable-bg has-expanded-header">
+            <ion-list>
+                <ion-item nav-clear menu-close href="#/app/Home">
+                    Home
+                </ion-item>
+                <ion-item nav-clear menu-close href="#/app/Events">
+                    My Schedule
+                </ion-item>
+                <ion-item nav-clear menu-close href="#/app/notifications">
+                    Assignments
+                </ion-item>
+                <!-- <ion-item nav-clear menu-close href="#/app/Settings">
+                    Settings
+                </ion-item>
+                <ion-item nav-clear menu-close href="#/app/About">
+                    About
+                </ion-item> -->
+                <ion-item nav-clear menu-close href="#/app/EditProfile">
+                    Edit Profile
+                </ion-item>
+
+                <ion-item nav-clear menu-close  ng-controller="viewLogout"  ng-click="showAlert()" >
+                    Log Out
+                </ion-item>
+            </ion-list>
+        </ion-content>
+    </ion-side-menu>
+</ion-side-menus>

@@ -1,0 +1,272 @@
+<ion-view view-title="EditProfile" >
+
+<ion-content ng-controller="EditCtrl" >
+
+  <!-- <form name="myForm" method = "post" ng-controller="LoginController"> -->
+
+<!-- <fieldset> -->
+  <!-- <legend>Upload on form submit</legend>
+  Username: -->
+  <!-- <input type="text" name="userName" ng-model="username" size="31" required>
+  <i ng-show="myForm.userName.$error.required">*required</i> -->
+
+
+  <!-- <br>Photo:
+  <input type="file" ngf-select ng-model="picFile" name="file"
+         accept="image/*" ngf-max-size="2MB" required
+         ngf-model-invalid="errorFile">
+  <i ng-show="myForm.file.$error.required">*required</i><br>
+  <i ng-show="myForm.file.$error.maxSize">File too large
+      {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
+  <img ng-show="myForm.file.$valid" ngf-thumbnail="picFile" class="thumb"> <button ng-click="picFile = null" ng-show="picFile">Remove</button>
+  <br>
+  <button ng-disabled="!myForm.$valid"
+          ng-click="uploadPic(picFile)">Submit</button>
+  <span class="progress" ng-show="picFile.progress >= 0">
+    <div style="width:{{picFile.progress}}%"
+        ng-bind="picFile.progress + '%'"></div>
+  </span>
+  <span ng-show="picFile.result">Upload Successful</span>
+  <span class="err" ng-show="errorMsg">{{errorMsg}}</span> -->
+<!-- </fieldset> -->
+<!-- <br>
+</form> -->
+
+
+
+
+
+
+
+
+ <form name="myForm" method = "post" novalidate>
+
+        <!-- <div class="row ionic responsive-sm">
+          <div class="col item-input">
+            <input type="text" name="line1"  ng-model="line1" placeholder="line1" class="text-center">
+          </div>
+        </div>
+        <hr class="horizontal-separator"> -->
+
+        <div class="row ionic responsive-sm">
+          <div class="col item-input">
+           <label class="item item-input item-floating-label">
+           <span class="input-label"><font color="grey">Address Line1</font></span>
+           <input type="text" name="line1"  ng-model="line1" placeholder="Address Line1" class="text-center" >
+           </label>
+         </div>
+       </div>
+
+
+        <!-- <div class="row ionic responsive-sm">
+          <div class="col item-input">
+            <input type="text" name="line2"  ng-model="line2" placeholder="line2"  class="text-center">
+          </div>
+        </div>
+        <hr class="horizontal-separator"> -->
+
+        <div class="row ionic responsive-sm">
+          <div class="col item-input">
+           <label class="item item-input item-floating-label">
+           <span class="input-label"><font color="grey">Address Line2</font></span>
+           <input type="text" name="line2"  ng-model="line2" placeholder="Address Line2"  class="text-center">
+           </label>
+         </div>
+       </div>
+
+
+
+
+        <!-- <div class="row ionic responsive-sm">
+          <div class="col item-input">
+            <input type="text" name="city" ng-model="city" placeholder="city"  class="text-center">
+          </div>
+        </div>
+        <hr class="horizontal-separator"> -->
+
+        <div class="row ionic responsive-sm">
+          <div class="col item-input">
+           <label class="item item-input item-floating-label">
+           <span class="input-label"><font color="grey">City</font></span>
+           <input type="text" name="city" ng-model="city" placeholder="City"  class="text-center">
+           </label>
+         </div>
+       </div>
+
+
+        <!-- <div class="row ionic responsive-sm">
+          <div class="col item-input">
+            <input type="text" name="postal_code" ng-model="postal_code" placeholder="postal code"  class="text-center">
+          </div>
+        </div>
+        <hr class="horizontal-separator"> -->
+
+        <div class="row ionic responsive-sm">
+          <div class="col item-input">
+           <label class="item item-input item-floating-label">
+           <span class="input-label"><font color="grey">Postal code</font></span>
+           <input type="text" my-maxlength="6" name="postal_code" ng-model="postal_code" placeholder="Postal code" numbers-only class="text-center">
+           </label>
+         </div>
+       </div>
+
+
+
+
+
+
+        <!-- <div class="row ionic responsive-sm">
+          <div class="col item-input">
+            <input type="text" name="phone_no" ng-model="phone_no" placeholder="phone no" ng-maxlength="11" class="text-center">
+          </div>
+        </div>
+        <hr class="horizontal-separator">
+        <br> -->
+
+        <div class="row ionic responsive-sm">
+          <div class="col item-input">
+           <label class="item item-input item-floating-label" >
+           <span class="input-label"><font color="grey">Phone no</font></span>
+           <input type="text" my-maxlength="8" name="phone_no" ng-model="phone_no" numbers-only class="text-center" placeholder="Phone no"  >
+           </label>
+         </div>
+       </div>
+
+       <div role="alert">
+       <!-- <span class="error"  ng-show="myForm.email.$error.required">
+       <font color="red">*Email Required!</font></span> -->
+       <span class="error"  ng-show="myForm.phone_no.$error.minlength">
+       <font color="red">Invalid email!</font></span>
+     </div>
+
+
+
+
+      <label class = "item item-input item-select" >
+        <div class = "input-label" >
+      <font color="grey">  T-shirt size </font>
+        </div>
+
+      <select ng-model="tshirt_size" name="tshirt_size">
+        <option value="xxxs">XXXS</option >
+                            <option  value="xxs">XXS</option>
+                            <option  value="xs">XS</option>
+                            <option  value="s">S</option>
+                            <option value="m">M</option>
+                            <option value="l">L</option>
+                            <option  value="xl">XL</option>
+                            <option value="xxl">XXL</option>
+                            <option  value="xxxl">XXXL</option>
+       </select>
+       </label>
+
+       <!-- <div class="row ionic responsive-sm">
+         <div class="col item-input">
+           <input type="text" name="email" ng-model="email" placeholder="email"  class="text-center">
+         </div>
+       </div>
+       <hr class="horizontal-separator"> -->
+
+       <div class="row ionic responsive-sm">
+         <div class="col item-input">
+          <label class="item item-input item-floating-label">
+          <span class="input-label"><font color="grey">Email</font></span>
+          <input type="email" name="email" ng-model="email" placeholder="Email"  class="text-center" required>
+          </label>
+        </div>
+      </div>
+
+      <div role="alert">
+      <!-- <span class="error"  ng-show="myForm.email.$error.required">
+      <font color="red">*Email Required!</font></span> -->
+      <span class="error"  ng-show="myForm.email.$error.email">
+      <font color="red">   Please enter a vaild email address</font></span>
+    </div>
+
+
+
+       <!-- <div class="row ionic responsive-sm">
+         <div class="col item-input">
+           <input type="text" name="bank" ng-model="bank" placeholder="bank"  class="text-center">
+         </div>
+       </div>
+       <hr class="horizontal-separator">
+       <br> -->
+
+       <div class="row ionic responsive-sm">
+         <div class="col item-input">
+          <label class="item item-input item-floating-label">
+          <span class="input-label"><font color="grey">Bank</font></span>
+          <input type="text" name="bank" ng-model="bank" placeholder="Bank"  class="text-center">
+        </div>
+      </div>
+
+
+       <label class = "item item-input item-select"  >
+       <div class = "input-label" class="text-center">
+       <font color="grey">Account type </font>
+       </div>
+
+     <select name="account_type" ng-model="account_type">
+       <option value="savings">Savings</option>
+      <option  value="current">Current</option>
+
+      </select>
+      </label>
+
+
+      <!-- <div class="row ionic responsive-sm">
+        <div class="col item-input">
+          <input type="text" name="name_as_bank_account" value="25" ng-model="name_as_bank_account" placeholder="name as bank account"  class="text-center">
+        </div>
+      </div>
+      <hr class="horizontal-separator"> -->
+
+      <div class="row ionic responsive-sm">
+        <div class="col item-input">
+         <label class="item item-input item-floating-label">
+         <span class="input-label"><font color="grey">Name As In Bank Account</font></span>
+         <input type="text" name="name_as_bank_account"  ng-model="name_as_bank_account" placeholder="Name As In Bank Account"  class="text-center">
+       </div>
+     </div>
+
+
+
+
+      <div class="row ionic responsive-sm">
+        <div class="col item-input">
+         <label class="item item-input item-floating-label">
+         <span class="input-label"><font color="grey">Account no</font></span>
+         <input type="text" name="account_no" ng-model="account_no" placeholder="Account no"  class="text-center">
+       </div>
+     </div>
+
+      <br><font color="grey">Photo:</font>
+      <input type="file" ngf-select ng-model="picFile" name="file"
+             accept="image/*" ngf-max-size="2MB" required
+             ngf-model-invalid="errorFile">
+      <!-- <i ng-show="myForm.file.$error.required">*required</i><br> -->
+      <i ng-show="myForm.file.$error.maxSize">File too large
+          {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
+      <!-- <img ng-show="myForm.file.$valid" ngf-thumbnail="picFile" class="thumb"> <button ng-click="picFile = null" ng-show="picFile">Remove</button> -->
+      <img ng-show="myForm.file.$valid" ngf-thumbnail="picFile" class="thumb"> <button ng-click="picFile = null" ng-show="picFile">Remove</button>
+      <br>
+  <br>
+      <!-- <button class="button button-block bar-balanced"  ng-disabled="!myForm.$valid"
+              ng-click="uploadPic(picFile)">Submit</button> -->
+            <button class="button button-block bar-balanced" ng-disabled="myForm.email.$error.email"
+                  ng-click="uploadPic(picFile)">Update Profile</button>
+      <!-- <span class="progress" ng-show="picFile.progress >= 0">
+        <div style="width:{{picFile.progress}}%"
+            ng-bind="picFile.progress + '%'"></div>
+      </span>
+      <span ng-show="picFile.result">Upload Successful</span>
+      <span class="err" ng-show="errorMsg">{{errorMsg}}</span> -->
+
+
+
+
+</form>
+</ion-content>
+
+</ion-view>

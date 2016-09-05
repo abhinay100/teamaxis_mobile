@@ -1,0 +1,22 @@
+<ion-view view-title="Sessions">
+    <ion-content style="background: #FFFFFF;">
+
+
+         <h5>Please Select Your Availability :</h5>
+         <ion-checkbox ng-repeat="item in events"
+                     ng-model="item.checked"
+                     ng-checked="item.checked">
+        Session {{item.session_no}} : {{item.date | date: 'dd-MM-yyyy'}} 
+       </ion-checkbox>
+
+       <div class="item">
+         <pre ng-bind="devList | json"></pre>
+       </div>
+
+   <div class ="submitCheck" style=" margin-left: 30%; margin-top: 10%;">
+      <button class="button button-balanced" ng-click="joinEvent(item.notification_id, item.event_id)")>
+      Submit
+     </button>
+   </div>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,28 @@
+<ion-view view-title="Log attendence" >
+<ion-content >
+
+
+  <div  class="card list" ng-repeat='item in AttendenceEvents' >
+      <div class="item item-avatar item-text-wrap">
+          <span class="avatar" style="background-image: url('img/material4.jpg');" ></span>
+          <strong>{{item.event_name}}</strong>:{{item.event_location}}
+          <div class="card-footer text-right">
+              <div class="pull-left">
+                  <i class="icon ion-calendar dark"></i> {{item.start_time}} / {{item.end_time}}
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <!-- <div class = "placeholder-feedback">
+  <label class="item item-input" >
+   <textarea placeholder="Feedback" ng-model="data.feedback" ></textarea>
+ </label>
+</div> -->
+
+  <button class="button button-block button-balanced" ng-click="Atendencelog()">
+    Mark Attendence
+  </button>
+
+</ion-content>
+</ion-view>

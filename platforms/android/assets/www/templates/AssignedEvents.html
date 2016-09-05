@@ -1,0 +1,40 @@
+<ion-view view-title="Events" cache-view="false">
+  <ion-content ng-class="{expanded:$scope.isExpanded}" class="session_detail">
+    <div class="hero" style="background:url('img/kabbadi.jpg');background-size: cover;">
+    </div>
+
+    <div ng-repeat='item in AttendenceEvents'>
+    <div class="tabs tabs-dark tabs-icon-top static">
+        <h2 class="text-white text-left" style="font-size:150%;">
+            {{item.event_name}}
+        </h2>
+    </div>
+
+    <div class="list list-inset bg-white">
+      <label class="item item-input item-stacked-label">
+        <span class="input-label"><i class="icon ion-calendar"> {{item.date}}</i></span>
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label"><i class="icon ion-clock"> {{item.start_time}} - {{item.end_time}}</i></span>
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label"><i class="icon ion-location"> {{item.event_location}}</i></span>
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label"><i class="icon ion-loop"> Monthly</i></span>
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label"><i class="icon ion-cash"> {{item.hourly_wage_t}}</i></span>
+      </label>
+
+    </div>
+
+
+  </div>
+
+
+  <h2><center ><font color="green"> Attendance Marked </font></center> </h2>
+
+
+  </ion-content>
+</ion-view>
